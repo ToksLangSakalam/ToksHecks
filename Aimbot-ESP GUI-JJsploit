@@ -1,0 +1,146 @@
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+local ImbotFOV = Instance.new("TextButton")
+local ESP = Instance.new("TextButton")
+local InfYield = Instance.new("TextButton")
+local TextLabel_2 = Instance.new("TextLabel")
+local Imbot = Instance.new("TextButton")
+
+--Properties:
+
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(59, 59, 59)
+Frame.Position = UDim2.new(0.777262151, 0, 0.564417183, 0)
+Frame.Size = UDim2.new(0, 238, 0, 305)
+
+TextLabel.Parent = Frame
+TextLabel.BackgroundColor3 = Color3.fromRGB(95, 95, 95)
+TextLabel.Size = UDim2.new(0, 238, 0, 46)
+TextLabel.Font = Enum.Font.ArialBold
+TextLabel.Text = "ToksLangSakalam | Made by Jai"
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.TextSize = 14.000
+
+ImbotFOV.Name = "ImbotFOV"
+ImbotFOV.Parent = Frame
+ImbotFOV.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ImbotFOV.Position = UDim2.new(0.0798319355, 0, 0.196721315, 0)
+ImbotFOV.Size = UDim2.new(0, 103, 0, 50)
+ImbotFOV.Font = Enum.Font.ArialBold
+ImbotFOV.Text = "Aimbot /w FOV"
+ImbotFOV.TextColor3 = Color3.fromRGB(0, 0, 0)
+ImbotFOV.TextSize = 14.000
+ImbotFOV.MouseButton1Down:connect(function()
+	loadstring(game:HttpGet("https://pastebin.com/raw/ygp8Enye"))()
+end)
+
+
+ESP.Name = "ESP"
+ESP.Parent = Frame
+ESP.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ESP.Position = UDim2.new(0.0798319355, 0, 0.416393429, 0)
+ESP.Size = UDim2.new(0, 200, 0, 50)
+ESP.Font = Enum.Font.ArialBold
+ESP.Text = "Unnamed ESP"
+ESP.TextColor3 = Color3.fromRGB(0, 0, 0)
+ESP.TextSize = 14.000
+ESP.MouseButton1Down:connect(function()
+	loadstring(game:HttpGet('https://pastebin.com/raw/Fa0MZ2gc'))()
+end)
+
+InfYield.Name = "Inf Yield"
+InfYield.Parent = Frame
+InfYield.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+InfYield.Position = UDim2.new(0.0798319355, 0, 0.639344275, 0)
+InfYield.Size = UDim2.new(0, 200, 0, 50)
+InfYield.Font = Enum.Font.ArialBold
+InfYield.Text = "Infinite Yield"
+InfYield.TextColor3 = Color3.fromRGB(0, 0, 0)
+InfYield.TextSize = 14.000
+InfYield.MouseButton1Down:connect(function()
+	loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+end)
+
+TextLabel_2.Parent = Frame
+TextLabel_2.BackgroundColor3 = Color3.fromRGB(95, 95, 95)
+TextLabel_2.Position = UDim2.new(0, 0, 0.872131169, 0)
+TextLabel_2.Size = UDim2.new(0, 238, 0, 39)
+TextLabel_2.Font = Enum.Font.ArialBold
+TextLabel_2.Text = "BOGS MATA | Pogi Ko | N to Close"
+TextLabel_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_2.TextSize = 14.000
+
+Imbot.Name = "Imbot"
+Imbot.Parent = Frame
+Imbot.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Imbot.Position = UDim2.new(0.554621875, 0, 0.196721315, 0)
+Imbot.Size = UDim2.new(0, 87, 0, 50)
+Imbot.Font = Enum.Font.ArialBold
+Imbot.Text = "Without FOV"
+Imbot.TextColor3 = Color3.fromRGB(0, 0, 0)
+Imbot.TextSize = 14.000
+Imbot.MouseButton1Down:connect(function()
+	loadstring(game:HttpGet("https://pastebin.com/raw/CwQcEnEd"))()
+end)
+
+
+-- Scripts:
+
+local function RNTZ_fake_script() -- Frame.Drag 
+	local script = Instance.new('LocalScript', Frame)
+
+	local UIS = game:GetService('UserInputService')
+	local frame = script.Parent
+	local dragToggle = nil
+	local dragSpeed = 0.25
+	local dragStart = nil
+	local startPos = nil
+	
+	local function updateInput(input)
+		local delta = input.Position - dragStart
+		local position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X,
+			startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+		game:GetService('TweenService'):Create(frame, TweenInfo.new(dragSpeed), {Position = position}):Play()
+	end
+	
+	frame.InputBegan:Connect(function(input)
+		if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then 
+			dragToggle = true
+			dragStart = input.Position
+			startPos = frame.Position
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragToggle = false
+				end
+			end)
+		end
+	end)
+	
+	UIS.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			if dragToggle then
+				updateInput(input)
+			end
+		end
+	end)
+end
+coroutine.wrap(RNTZ_fake_script)()
+local function PERT_fake_script() -- Frame.Toggle 
+	local script = Instance.new('LocalScript', Frame)
+
+	player = game.Players.LocalPlayer
+	
+	player:GetMouse().KeyDown:Connect(function(key)
+		if key == "n" and script.Parent.Visible == false then
+			script.Parent.Visible = true
+		else
+			if key == "n" and script.Parent.Visible == true then
+				script.Parent.Visible = false
+			end
+		end
+	end)
+end
+coroutine.wrap(PERT_fake_script)()
